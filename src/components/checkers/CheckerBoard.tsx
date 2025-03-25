@@ -70,14 +70,15 @@ const CheckerBoard: React.FC<CheckerBoardProps> = ({ currentPlayer, onMove }) =>
   const renderBoard = () => {
     const squares = [];
     
+    // Render row numbers
     for (let row = 0; row < 8; row++) {
       squares.push(
         <div 
           key={`row-label-${row}`} 
-          className="board-coordinates" 
+          className="absolute text-xs font-bold text-white bg-blue-600/80 w-6 h-6 flex items-center justify-center z-10" 
           style={{ 
-            left: '-1.5rem', 
-            top: `calc(${12.5 * row + 6.25}% - 0.5rem)`,
+            left: '-2rem', 
+            top: `calc(${row * 12.5}% + 6.25% - 0.75rem)`,
           }}
         >
           {8 - row}
@@ -85,14 +86,15 @@ const CheckerBoard: React.FC<CheckerBoardProps> = ({ currentPlayer, onMove }) =>
       );
     }
     
+    // Render column letters
     for (let col = 0; col < 8; col++) {
       squares.push(
         <div 
           key={`col-label-${col}`} 
-          className="board-coordinates" 
+          className="absolute text-xs font-bold text-white bg-blue-600/80 w-6 h-6 flex items-center justify-center z-10" 
           style={{ 
-            bottom: '-1.5rem', 
-            left: `calc(${12.5 * col + 6.25}% - 0.5rem)`,
+            bottom: '-2rem', 
+            left: `calc(${col * 12.5}% + 6.25% - 0.75rem)`,
           }}
         >
           {String.fromCharCode(97 + col)}
