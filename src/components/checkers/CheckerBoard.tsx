@@ -110,7 +110,7 @@ const CheckerBoard: React.FC<CheckerBoardProps> = ({ currentPlayer, onMove }) =>
           <div 
             key={`${row}-${col}`} 
             className={cn(
-              "absolute transition-colors duration-200",
+              "absolute overflow-hidden transition-colors duration-200",
               isBlackSquare 
                 ? isValidMoveSquare 
                   ? "board-square-dark/70 valid-move" 
