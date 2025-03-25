@@ -1,25 +1,12 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
-import CheckerBoard from '@/components/CheckerBoard';
+import CheckerBoard from '@/components/checkers/CheckerBoard';
 import GameInfo from '@/components/GameInfo';
 import GiftModal from '@/components/GiftModal';
 import ConnectWallet from '@/components/ConnectWallet';
-
-interface Position {
-  row: number;
-  col: number;
-}
-
-interface Piece {
-  id: number;
-  player: 'white' | 'black';
-  position: Position;
-  isKing: boolean;
-  isSelected: boolean;
-}
+import { Piece, Position } from '@/components/checkers/types';
 
 interface Player {
   id: string;
@@ -51,22 +38,17 @@ const Game = () => {
     }
   });
 
-  // Check if wallet is connected on mount
   useEffect(() => {
-    // For demo purposes, we'll show the wallet dialog if not connected
     if (!isWalletConnected) {
       setIsWalletModalOpen(true);
     } else {
       startGame();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleConnectWallet = async (provider: string) => {
-    // Simulate wallet connection
     console.log(`Connecting wallet with ${provider}...`);
     
-    // Mock successful connection after a short delay
     return new Promise<boolean>((resolve) => {
       setTimeout(() => {
         setIsWalletConnected(true);
@@ -83,11 +65,9 @@ const Game = () => {
   };
 
   const handleMove = (piece: Piece, newPosition: Position) => {
-    // Switch turns after a move
     const nextPlayer = currentPlayer === 'white' ? 'black' : 'white';
     setCurrentPlayer(nextPlayer);
     
-    // Update player current status
     setPlayers(prev => ({
       white: {
         ...prev.white,
@@ -99,15 +79,12 @@ const Game = () => {
       }
     }));
 
-    // For demo purposes, let's have a 20% chance of winning after each move
     if (Math.random() < 0.2) {
       handleGameEnd(piece.player);
     }
 
-    // For AI opponent, simulate a move after 1.5 seconds
     if (nextPlayer === 'black') {
       setTimeout(() => {
-        // Simulate AI making a move
         setCurrentPlayer('white');
         setPlayers(prev => ({
           white: {
@@ -131,9 +108,7 @@ const Game = () => {
     setWinner(winnerId);
     
     if (winnerColor === 'white') {
-      // Player wins
       toast.success('Congratulations! You won the game!');
-      // Award Bitmon
       setBalance(prev => ({
         ...prev,
         bitmon: prev.bitmon + 1
@@ -141,12 +116,10 @@ const Game = () => {
       
       toast.success('You earned 1 Bitmon!');
       
-      // Show gift modal
       setTimeout(() => {
         setIsGiftModalOpen(true);
       }, 1000);
     } else {
-      // AI wins
       toast.error('Game over! Static Cerberus won the game.');
     }
   };
@@ -154,7 +127,6 @@ const Game = () => {
   const handleForfeit = () => {
     if (gameStatus !== 'playing') return;
     
-    // Forfeit gives the win to the opponent
     const winnerId = currentPlayer === 'white' ? players.black.id : players.white.id;
     setWinner(winnerId);
     setGameStatus('ended');
@@ -163,10 +135,8 @@ const Game = () => {
   };
 
   const handleSendGift = async (giftId: string, recipient: string) => {
-    // Simulate sending a gift
     console.log(`Sending ${giftId} to ${recipient}...`);
     
-    // Deduct cost from balance
     const giftPrice = giftId === 'coffee' ? 5 : 10;
     
     setBalance(prev => ({
@@ -174,7 +144,6 @@ const Game = () => {
       coins: prev.coins - giftPrice
     }));
     
-    // Mock successful gift sending after a short delay
     return new Promise<boolean>((resolve) => {
       setTimeout(() => {
         resolve(true);
