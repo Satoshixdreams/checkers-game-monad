@@ -47,18 +47,12 @@
   .checker-piece {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.16);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 50%;
   }
 
   .checker-piece:hover {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
-    transform: translate(-50%, -50%) translateY(-2px);
+    transform: translateY(-2px);
   }
 
   .white-piece {
