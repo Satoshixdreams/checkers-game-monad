@@ -11,7 +11,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
-import { Coffee, Rose, X } from 'lucide-react';
+import { Coffee, Flower, X } from 'lucide-react';
 
 interface Gift {
   id: string;
@@ -37,7 +37,7 @@ const gifts: Gift[] = [
   {
     id: 'rose',
     name: 'Rose',
-    icon: <Rose className="h-8 w-8 text-rose-400" />,
+    icon: <Flower className="h-8 w-8 text-rose-400" />,
     price: 10
   }
 ];
