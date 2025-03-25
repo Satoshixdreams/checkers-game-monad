@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Piece, Position, CheckerBoardProps } from './types';
@@ -112,9 +113,9 @@ const CheckerBoard: React.FC<CheckerBoardProps> = ({ currentPlayer, onMove }) =>
               "absolute transition-colors duration-200",
               isBlackSquare 
                 ? isValidMoveSquare 
-                  ? "bg-game-board-dark/70 valid-move" 
-                  : "bg-game-board-dark" 
-                : "bg-game-board-light"
+                  ? "board-square-dark/70 valid-move" 
+                  : "board-square-dark" 
+                : "board-square-light"
             )}
             style={{ 
               width: '12.5%', 
@@ -141,7 +142,7 @@ const CheckerBoard: React.FC<CheckerBoardProps> = ({ currentPlayer, onMove }) =>
 
   return (
     <div className="game-board-container">
-      <div className="game-board border-4 border-game-dark shadow-[0_0_30px_rgba(139,92,246,0.3)]">
+      <div className="game-board">
         {renderBoard()}
       </div>
     </div>
