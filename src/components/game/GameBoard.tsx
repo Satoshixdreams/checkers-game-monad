@@ -1,6 +1,6 @@
 
 import React from 'react';
-import CheckerBoard from '@/components/checkers/CheckerBoard';
+import CheckerBoard from '@/components/checkerboard/CheckerBoard';
 import { useGameContext } from '@/context/GameContext';
 
 const GameBoard: React.FC = () => {
