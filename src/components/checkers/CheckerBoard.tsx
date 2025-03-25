@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Piece, Position, CheckerBoardProps } from './types';
@@ -110,7 +109,7 @@ const CheckerBoard: React.FC<CheckerBoardProps> = ({ currentPlayer, onMove }) =>
           <div 
             key={`${row}-${col}`} 
             className={cn(
-              "w-1/8 h-1/8 absolute transition-colors duration-200",
+              "absolute transition-colors duration-200",
               isBlackSquare 
                 ? isValidMoveSquare 
                   ? "bg-game-board-dark/70 valid-move" 
