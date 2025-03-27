@@ -17,7 +17,7 @@ const CheckerPiece: React.FC<CheckerPieceProps> = ({ piece, isSelected, onClick 
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: "spring", damping: 15 }}
       className={cn(
-        "absolute w-[40%] h-[40%] top-0 left-0 cursor-pointer",
+        "absolute w-[80%] h-[80%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full cursor-pointer",
         piece.player === 'white' ? "white-piece" : "black-piece",
         piece.isKing && "king",
         isSelected && "ring-2 ring-yellow-400 ring-opacity-80"
