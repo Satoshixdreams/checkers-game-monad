@@ -47,16 +47,14 @@
   .white-piece {
     background: #ffffff;
     border: 1px solid #d1d1d1;
-    border-radius: 50% 0 0 0;
-    transform: rotate(-45deg);
+    border-radius: 0 0 0 100%;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
   }
 
   .black-piece {
     background: #333333;
     border: 1px solid #000000;
-    border-radius: 50% 0 0 0;
-    transform: rotate(-45deg);
+    border-radius: 0 0 0 100%;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
   }
 
