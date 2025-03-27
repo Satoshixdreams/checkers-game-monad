@@ -67,40 +67,33 @@ const CheckerBoard: React.FC<CheckerBoardProps> = ({ currentPlayer, onMove }) =>
     }
   };
 
-  const renderBoard = () => {
-    const squares = [];
-    
-    // Add board coordinates
-    squares.push(<BoardCoordinates key="coordinates" />);
-    
-    // Add board squares
-    for (let row = 0; row < 8; row++) {
-      for (let col = 0; col < 8; col++) {
-        const piece = getPieceAtPosition(row, col, pieces);
-        const isValidMoveSquare = validMoves.some(move => move.row === row && move.col === col);
-        
-        squares.push(
-          <BoardSquare
-            key={`${row}-${col}`}
-            row={row}
-            col={col}
-            piece={piece}
-            isValidMove={isValidMoveSquare}
-            selectedPieceId={selectedPiece?.id || null}
-            onSquareClick={handleSquareClick}
-            onPieceClick={handlePieceClick}
-          />
-        );
-      }
-    }
-    
-    return squares;
-  };
-
   return (
     <div className="game-board-container">
-      <div className="game-board">
-        {renderBoard()}
+      <div className="game-board relative">
+        <BoardCoordinates />
+        <div className="absolute inset-0 grid grid-cols-8 grid-rows-8">
+          {Array.from({ length: 8 }, (_, row) => (
+            Array.from({ length: 8 }, (_, col) => {
+              const piece = getPieceAtPosition(row, col, pieces);
+              const isValidMoveSquare = validMoves.some(move => move.row === row && move.col === col);
+              const isBlackSquare = (row + col) % 2 === 1;
+              
+              return (
+                <BoardSquare
+                  key={`${row}-${col}`}
+                  row={row}
+                  col={col}
+                  piece={piece}
+                  isValidMove={isValidMoveSquare}
+                  selectedPieceId={selectedPiece?.id || null}
+                  onSquareClick={handleSquareClick}
+                  onPieceClick={handlePieceClick}
+                  isBlackSquare={isBlackSquare}
+                />
+              );
+            })
+          ))}
+        </div>
       </div>
     </div>
   );
