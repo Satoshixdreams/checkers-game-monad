@@ -28,7 +28,7 @@ const BoardSquare: React.FC<BoardSquareProps> = ({
   return (
     <div 
       className={cn(
-        "relative w-full h-full transition-colors duration-200",
+        "relative w-full h-full border border-[#0191b4] transition-colors duration-200",
         isBlackSquare 
           ? isValidMove 
             ? "board-square-dark/80 valid-move" 
